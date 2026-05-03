@@ -66,6 +66,8 @@ userSchema.methods.getSignedToken = function (res) {
     res.cookie('refreshToken', `${refreshtoken}`, {
         maxAge: 86400 * 7000,
         httpOnly: true,
+        secure:process.env.NODE_ENV===`production`,
+        sameSite:process.env.NODE_ENV===`production`?'none':'lax'
     })
     return accesToken
 }

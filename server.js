@@ -6,6 +6,8 @@ import colors from 'colors';
 import 'dotenv/config'
 import connectDB from './config/db.js';
 connectDB()
+import path from 'path'
+import { fileURLToPath } from 'url';
 
 import authRoutes from './routes/authRoutes.js';
 import openaiRoutes from './routes/openaiRoutes.js';
@@ -19,10 +21,16 @@ app.use(express.json())
 app.use((bodyParser.urlencoded({ extended: false })))
 app.use(morgan('dev'))
 
+const _filename=fileURLToPath(import.meta.url)
+const _dirname=path.dirname(_filename)
+
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/openai', openaiRoutes)
 app.use('/api/v1/interview', interviewRoutes)
-
+app.use(express.static(path.join(_dirname,'gptclone','dist')))
+app.get(/.*/,(req,res)=>{
+  res.sendFile(path.join(_dirname,'gptclone','dist','index.html'))
+})
 app.use(errorHandler)
 
 const port = process.env.PORT || 3000

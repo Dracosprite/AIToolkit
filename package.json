@@ -4,11 +4,11 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-    "start": "concurrently \"npm run server\" \"npm run client\"",
-    "server": "nodemon server.js",
-    "client": "cd gptclone && npm run dev",
-    "test": "echo \"Error: no test specified\" && exit 1"
-  },
+  "start": "node server.js",
+  "dev": "concurrently \"nodemon server.js\" \"cd gptclone && npm run dev\"",
+  "build": "cd gptclone && npm install && npm run build",
+  "test": "echo \"Error: no test specified\" && exit 1"
+},
   "keywords": [],
   "author": "",
   "license": "ISC",
@@ -33,6 +33,7 @@
     "morgan": "^1.10.1",
     "multer": "^2.1.1",
     "nodemon": "^3.1.14",
-    "openai": "^6.34.0"
+    "openai": "^6.34.0",
+    "pdf-parse-new": "^2.1.0"
   }
 }
