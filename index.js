@@ -27,6 +27,9 @@ const _dirname=path.dirname(_filename)
 app.use('/api/v1/auth', authRoutes)
 app.use('/api/v1/openai', openaiRoutes)
 app.use('/api/v1/interview', interviewRoutes)
+app.head('/', (req, res) => {
+  res.sendStatus(200)
+})
 app.use(express.static(path.join(_dirname,'gptclone','dist')))
 app.get(/.*/,(req,res)=>{
   res.sendFile(path.join(_dirname,'gptclone','dist','index.html'))
