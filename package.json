@@ -4,7 +4,7 @@
   "description": "",
   "main": "index.js",
   "scripts": {
-  "start": "node server.js",
+  "start": "node index.js",
   "dev": "concurrently \"nodemon server.js\" \"cd gptclone && npm run dev\"",
   "build": "cd gptclone && npm install && npm run build",
   "test": "echo \"Error: no test specified\" && exit 1"
