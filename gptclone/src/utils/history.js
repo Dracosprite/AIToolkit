@@ -19,7 +19,7 @@ export const addHistoryEntry = (entry) => {
       ...entry,
     };
     history.unshift(newEntry);
-    // Keep only last 50 entries
+    
     const trimmedHistory = history.slice(0, 50);
     localStorage.setItem(HISTORY_KEY, JSON.stringify(trimmedHistory));
     return newEntry;
